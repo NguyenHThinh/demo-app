@@ -1,11 +1,7 @@
 "use client";
 
 import { RequireAuth } from "@/components/demo/require-auth";
-import {
-  BrandBlock,
-  ChartBackground,
-  PurpleButton,
-} from "@/components/demo/chrome";
+import { AppShell, BrandBlock, PurpleButton } from "@/components/demo/chrome";
 import { clearSession } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 
@@ -14,32 +10,45 @@ export default function HomePage() {
 
   return (
     <RequireAuth>
-      <ChartBackground>
-        <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-8">
-          <div className="flex items-start justify-between">
-            <BrandBlock compact />
-            <button
-              type="button"
-              className="text-sm text-[var(--brand-purple)] underline"
-              onClick={() => {
-                clearSession();
-                router.push("/signin");
-              }}
-            >
-              Sign out
-            </button>
-          </div>
-
-          <div className="flex flex-1 flex-col items-center justify-center gap-8 md:flex-row">
-            <PurpleButton href="/projects/new" className="min-w-52 px-8 py-4 text-lg">
-              New Project
-            </PurpleButton>
-            <PurpleButton href="/projects" className="min-w-52 px-8 py-4 text-lg">
-              Open Existing
-            </PurpleButton>
-          </div>
+      <AppShell
+        title={
+          <p className="text-sm font-medium text-navy">
+            Real Options Valuation
+          </p>
+        }
+        actions={
+          <button
+            type="button"
+            className="text-sm font-medium text-brand hover:underline"
+            onClick={() => {
+              clearSession();
+              router.push("/signin");
+            }}
+          >
+            Sign out
+          </button>
+        }
+      >
+        <div className="mb-8">
+          <BrandBlock compact />
         </div>
-      </ChartBackground>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <PurpleButton
+            href="/projects/new"
+            className="h-auto min-h-28 flex-col gap-1 rounded-2xl px-8 py-6 text-lg"
+          >
+            New Project
+          </PurpleButton>
+          <PurpleButton
+            href="/projects"
+            variant="secondary"
+            className="h-auto min-h-28 flex-col gap-1 rounded-2xl px-8 py-6 text-lg"
+          >
+            Open Existing
+          </PurpleButton>
+        </div>
+      </AppShell>
     </RequireAuth>
   );
 }

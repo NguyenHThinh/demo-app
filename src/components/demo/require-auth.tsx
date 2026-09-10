@@ -18,7 +18,7 @@ export function RequireAuth({ children }: { children: React.ReactNode }) {
 
   if (!ready) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-white text-[var(--brand-purple)]">
+      <div className="flex min-h-screen items-center justify-center bg-navy-deep text-white">
         Loading…
       </div>
     );

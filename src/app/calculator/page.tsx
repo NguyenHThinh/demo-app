@@ -1,10 +1,9 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 import { RequireAuth } from "@/components/demo/require-auth";
-import { BrandBlock, PurpleButton } from "@/components/demo/chrome";
+import { BrandMark, PurpleButton } from "@/components/demo/chrome";
 import { FinancialCalculatorModule } from "@/features/financial-modeling/financial-calculator-module";
 import {
   isCalculatorCaseMode,
@@ -85,26 +84,30 @@ function CalculatorInner() {
   );
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="border-b border-slate-200 bg-white px-4 py-3">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-3">
-          <div>
-            <BrandBlock compact />
-            <p className="mt-1 text-sm text-slate-600">{title}</p>
-            {isDraft && !projectId ? (
-              <p className="text-xs text-amber-700">
-                Draft — click Save to add this project to Open Existing
+    <div className="min-h-screen bg-content-bg">
+      <header className="sticky top-0 z-20 border-b border-content-border bg-white">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <div className="flex min-w-0 items-center gap-4">
+            <BrandMark onDark={false} />
+            <div className="min-w-0 border-l border-content-border pl-4">
+              <p className="truncate text-sm font-semibold text-navy">
+                {title}
               </p>
-            ) : null}
-            {saveMessage ? (
-              <p className="text-xs text-emerald-700">{saveMessage}</p>
-            ) : null}
+              {isDraft && !projectId ? (
+                <p className="text-xs text-amber-700">
+                  Draft — click Save to add this project to Open Existing
+                </p>
+              ) : null}
+              {saveMessage ? (
+                <p className="text-xs text-emerald-700">{saveMessage}</p>
+              ) : null}
+            </div>
           </div>
           <div className="flex flex-wrap gap-2">
             {isDraft && !projectId ? (
               <PurpleButton
                 type="button"
-                className="bg-slate-500 hover:bg-slate-600"
+                variant="outline"
                 onClick={() => {
                   clearProjectDraft();
                   router.push("/projects/new");
@@ -118,20 +121,22 @@ function CalculatorInner() {
             </PurpleButton>
           </div>
         </div>
-      </div>
+      </header>
 
       <div className="mx-auto max-w-[1400px] p-3 md:p-4">
-        <FinancialCalculatorModule
-          key={projectId ?? "draft"}
-          embedMode
-          lockedCaseMode={lockedCaseMode}
-          initialTab={lockedCaseMode ?? "npv"}
-          persistedBundle={existing?.persistedBundle ?? null}
-          exportResultsVisible={false}
-          saveFinancialCaseVisible
-          saveFinancialCasePending={savePending}
-          onRequestSaveFinancialCase={handleSave}
-        />
+        <div className="overflow-hidden rounded-2xl border border-content-border bg-white shadow-sm">
+          <FinancialCalculatorModule
+            key={projectId ?? "draft"}
+            embedMode
+            lockedCaseMode={lockedCaseMode}
+            initialTab={lockedCaseMode ?? "npv"}
+            persistedBundle={existing?.persistedBundle ?? null}
+            exportResultsVisible={false}
+            saveFinancialCaseVisible
+            saveFinancialCasePending={savePending}
+            onRequestSaveFinancialCase={handleSave}
+          />
+        </div>
       </div>
     </div>
   );
@@ -142,7 +147,7 @@ export default function CalculatorPage() {
     <RequireAuth>
       <Suspense
         fallback={
-          <div className="flex min-h-screen items-center justify-center">
+          <div className="flex min-h-screen items-center justify-center bg-content-bg text-navy">
             Loading calculator…
           </div>
         }

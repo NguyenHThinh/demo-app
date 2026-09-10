@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-  BrandBlock,
+  BrandMark,
   ChartBackground,
   Field,
+  Panel,
   PurpleButton,
   TextInput,
   UrlCaption,
@@ -34,60 +35,58 @@ export default function SignInPage() {
 
   return (
     <ChartBackground>
-      <div className="mx-auto min-h-screen max-w-5xl px-6 py-8">
-        <div className="flex items-start justify-between gap-4">
-          <UrlCaption path="/signin" />
-          <PurpleButton href="/about">About</PurpleButton>
+      <div className="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-4 py-10">
+        <div className="mb-6 flex items-center justify-between gap-3">
+          <BrandMark onDark />
+          <PurpleButton href="/about" variant="ghost">
+            About
+          </PurpleButton>
         </div>
+        <UrlCaption path="/signin" onDark />
 
-        <div className="mt-6">
-          <BrandBlock compact />
-        </div>
+        <Panel className="mt-4">
+          <h2 className="text-2xl font-bold text-navy">Sign In</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Financial Modelling – Real Options Valuation
+          </p>
+          <div className="mt-4 h-px w-full bg-content-border" />
 
-        <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-          <div className="w-full max-w-md">
-            <h2 className="text-xl font-bold text-[var(--brand-purple)] underline">
-              Sign In
-            </h2>
-            <div className="mt-2 h-px w-full bg-sky-500/70" />
+          <form onSubmit={onSubmit} className="mt-6 space-y-5">
+            <Field label="Email / Username">
+              <TextInput
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Field>
+            <Field label="Password">
+              <TextInput
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Field>
+            {error ? <p className="text-sm text-red-600">{error}</p> : null}
+            <PurpleButton type="submit" className="w-full">
+              Login
+            </PurpleButton>
+            <button
+              type="button"
+              className="w-full text-center text-sm text-brand hover:underline"
+              onClick={() =>
+                alert("Forgotten username or password? (Demo only)")
+              }
+            >
+              Forgotten username or password?
+            </button>
+          </form>
 
-            <form onSubmit={onSubmit} className="mt-6 space-y-5">
-              <Field label="Email / Username">
-                <TextInput
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Field>
-              <Field label="Password">
-                <TextInput
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Field>
-              {error ? <p className="text-sm text-red-600">{error}</p> : null}
-              <div className="flex flex-wrap items-center gap-4">
-                <PurpleButton type="submit">Login</PurpleButton>
-                <button
-                  type="button"
-                  className="text-sm text-[var(--brand-purple)]"
-                  onClick={() =>
-                    alert("Forgotten username or password? (Demo only)")
-                  }
-                >
-                  Forgotten username or password?
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <div className="pt-2 text-[var(--brand-purple)] md:pt-0">
-            <p className="font-semibold">New User?</p>
-            <Link href="/signup" className="underline">
+          <div className="mt-6 border-t border-content-border pt-4 text-sm text-navy">
+            <span className="font-semibold">New User?</span>{" "}
+            <Link href="/signup" className="text-brand underline">
               Create an account
             </Link>
           </div>
-        </div>
+        </Panel>
       </div>
     </ChartBackground>
   );

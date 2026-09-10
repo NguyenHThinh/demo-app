@@ -1,42 +1,59 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@source "../../src/**/*.{js,ts,jsx,tsx,mdx}";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.038 0.035 260);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.038 0.035 260);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.038 0.035 260);
-	--primary: oklch(0.65 0.14 175);
-	--primary-foreground: oklch(0.98 0.004 250);
-	--secondary: oklch(0.96 0.018 265);
-	--secondary-foreground: oklch(0.11 0.05 265);
-	--muted: oklch(0.97 0.005 265);
-	--muted-foreground: oklch(0.55 0.01 265);
-	--accent: oklch(0.96 0.018 265);
-	--accent-foreground: oklch(0.11 0.05 265);
+	/* innStrat marketing + Innstrat2.0 surfaces */
+	--brand: #5262ed;
+	--brand-hover: #9ca6ff;
+	--brand-deep: #3f4dd4;
+	--navy: #373b53;
+	--navy-deep: #0b0f19;
+	--content-bg: #f8f8fb;
+	--content-border: #ebecf5;
+
+	/* Keep old alias so existing class refs keep working during migrate */
+	--brand-purple: var(--brand);
+	--brand-purple-dark: var(--brand-deep);
+
+	--background: #f8f8fb;
+	--foreground: #1a1d2e;
+	--card: #ffffff;
+	--card-foreground: #1a1d2e;
+	--popover: #ffffff;
+	--popover-foreground: #1a1d2e;
+	--primary: #5262ed;
+	--primary-foreground: #ffffff;
+	--secondary: #ebecf5;
+	--secondary-foreground: #373b53;
+	--muted: #f1f2f8;
+	--muted-foreground: #6b7089;
+	--accent: #eef0ff;
+	--accent-foreground: #373b53;
 	--destructive: oklch(0.63 0.24 25);
-	--destructive-foreground: oklch(0.98 0.004 250);
-	--border: oklch(0.91 0.008 265);
-	--input: oklch(0.91 0.012 265);
-	--ring: oklch(0.65 0.14 175);
-	--radius: 0.625rem;
-	--chart-1: oklch(0.58 0.12 180);
-	--chart-2: oklch(0.70 0.16 165);
-	--chart-3: oklch(0.63 0.24 25);
-	--chart-4: oklch(0.75 0.18 75);
-	--chart-5: oklch(0.55 0.24 275);
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.145 0 0);
-	--sidebar-primary: oklch(0.205 0 0);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.97 0 0);
-	--sidebar-accent-foreground: oklch(0.205 0 0);
-	--sidebar-border: oklch(0.922 0 0);
-	--sidebar-ring: oklch(0.708 0 0);
+	--destructive-foreground: #ffffff;
+	--border: #ced1e9;
+	--input: #ced1e9;
+	--ring: #5262ed;
+	--radius: 0.75rem;
+
+	--chart-1: #5262ed;
+	--chart-2: #14b8a6;
+	--chart-3: #f59e0b;
+	--chart-4: #6366f1;
+	--chart-5: #22d3ee;
+
+	--sidebar: #2a2e42;
+	--sidebar-foreground: #f8f8fb;
+	--sidebar-primary: #5262ed;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #373b53;
+	--sidebar-accent-foreground: #f8f8fb;
+	--sidebar-border: #454a63;
+	--sidebar-ring: #5262ed;
 
 	--stage-1: #0d9488;
 	--stage-2: #14b8a6;
@@ -57,9 +74,6 @@
 	--dark-input: #1f2937;
 	--dark-border: #2b3444;
 	--dark-placeholder: #9ca3af;
-
-	--brand-purple: #6A2E9F;
-	--brand-purple-dark: #5a2588;
 }
 
 @theme inline {
@@ -101,28 +115,23 @@
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
-	--color-stage-1: var(--stage-1);
-	--color-stage-2: var(--stage-2);
-	--color-stage-3: var(--stage-3);
-	--color-stage-4: var(--stage-4);
-	--color-stage-5: var(--stage-5);
-	--color-series-1: var(--series-1);
-	--color-series-2: var(--series-2);
-	--color-series-3: var(--series-3);
-	--color-chart-text: var(--chart-text);
-	--color-chart-grid: var(--chart-grid);
-	--color-chart-tooltip-bg: var(--chart-tooltip-bg);
+	--color-brand: var(--brand);
+	--color-brand-hover: var(--brand-hover);
+	--color-navy: var(--navy);
+	--color-navy-deep: var(--navy-deep);
+	--color-content-bg: var(--content-bg);
+	--color-content-border: var(--content-border);
+	--color-brand-purple: var(--brand);
+	--color-brand-purple-dark: var(--brand-deep);
 	--color-dark-surface: var(--dark-surface);
 	--color-dark-input: var(--dark-input);
 	--color-dark-border: var(--dark-border);
 	--color-dark-placeholder: var(--dark-placeholder);
-	--color-brand-purple: var(--brand-purple);
-	--color-brand-purple-dark: var(--brand-purple-dark);
 }
 
 body {
 	margin: 0;
-	font-family: var(--font-body), "Source Sans 3", sans-serif;
+	font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 	color: var(--foreground);
 	background: var(--background);
 }

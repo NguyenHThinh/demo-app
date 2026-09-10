@@ -1,5 +1,7 @@
 import {
+  BrandMark,
   ChartBackground,
+  Panel,
   PurpleButton,
   UrlCaption,
 } from "@/components/demo/chrome";
@@ -16,13 +18,18 @@ export default function AboutPage() {
   return (
     <ChartBackground>
       <div className="mx-auto flex min-h-screen max-w-4xl flex-col px-6 py-8">
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <UrlCaption path="" />
-          <PurpleButton href="/about">About</PurpleButton>
-        </div>
+        <header className="mb-8 flex items-center justify-between gap-4">
+          <BrandMark onDark />
+          <div className="flex items-center gap-3">
+            <UrlCaption path="" onDark />
+            <PurpleButton href="/about" variant="ghost">
+              About
+            </PurpleButton>
+          </div>
+        </header>
 
-        <div className="flex flex-1 flex-col justify-center gap-10 py-8">
-          <div className="space-y-4 text-base leading-relaxed text-[var(--brand-purple)] md:text-lg">
+        <Panel className="flex-1 bg-white/95">
+          <div className="space-y-4 text-base leading-relaxed text-navy md:text-lg">
             <p>
               DCF &amp; Traditional NPV valuations are fairly accurate when
               dealing with cost cutting initiatives or capital projects with a
@@ -39,26 +46,26 @@ export default function AboutPage() {
               the table by continuing to use not-fit-for-purpose valuation
               metrics..
             </p>
-            <p className="font-semibold">
+            <p className="font-semibold text-brand">
               Get started with Real Options valuation today
             </p>
           </div>
 
-          <ul className="space-y-3 text-base text-[var(--brand-purple)] md:text-lg">
+          <ul className="mt-8 space-y-3 text-base text-navy md:text-lg">
             {BENEFITS.map((item) => (
               <li key={item} className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--brand-purple)]" />
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
 
-          <div className="flex justify-center pt-4">
-            <PurpleButton href="/signup" className="px-10 py-3 text-lg">
+          <div className="mt-10 flex justify-center">
+            <PurpleButton href="/signup" className="px-10 py-3 uppercase tracking-wider">
               Get Started For Free
             </PurpleButton>
           </div>
-        </div>
+        </Panel>
       </div>
     </ChartBackground>
   );

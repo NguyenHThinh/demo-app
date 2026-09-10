@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-  BrandBlock,
+  BrandMark,
   ChartBackground,
   Field,
+  Panel,
   PurpleButton,
   TextInput,
   UrlCaption,
@@ -48,102 +49,101 @@ export default function SignUpPage() {
 
   return (
     <ChartBackground>
-      <div className="mx-auto min-h-screen max-w-5xl px-6 py-8">
-        <div className="flex items-start justify-between gap-4">
-          <UrlCaption path="/signup" />
+      <div className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-4 py-10">
+        <div className="mb-6 flex items-center justify-between gap-3">
+          <BrandMark onDark />
           <PurpleButton
             type="button"
-            className="shrink-0 bg-slate-500 hover:bg-slate-600"
+            variant="ghost"
             href="/signin"
           >
             Back to Sign In
           </PurpleButton>
         </div>
-        <div className="mt-6">
-          <BrandBlock compact />
-        </div>
+        <UrlCaption path="/signup" onDark />
 
-        <h2 className="mt-8 text-xl font-bold text-[var(--brand-purple)] underline">
-          Create New Account
-        </h2>
-        <div className="mt-2 h-px w-full bg-sky-500/70" />
+        <Panel className="mt-4">
+          <h2 className="text-2xl font-bold text-navy">
+            Create New Account
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Innoster Real Options · Powered by InnStrat
+          </p>
+          <div className="mt-4 h-px w-full bg-content-border" />
 
-        <form onSubmit={onSubmit} className="mt-6 grid gap-5 md:grid-cols-2">
-          <Field label="First Name">
-            <TextInput
-              value={form.firstName}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, firstName: e.target.value }))
-              }
-            />
-          </Field>
-          <Field label="Last Name">
-            <TextInput
-              value={form.lastName}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, lastName: e.target.value }))
-              }
-            />
-          </Field>
-          <Field label="Company Name">
-            <TextInput
-              value={form.companyName}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, companyName: e.target.value }))
-              }
-            />
-          </Field>
-          <Field label="E-mail Address">
-            <TextInput
-              type="email"
-              value={form.email}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, email: e.target.value }))
-              }
-            />
-          </Field>
-          <Field label="Username">
-            <TextInput
-              value={form.username}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, username: e.target.value }))
-              }
-            />
-          </Field>
-          <div className="hidden md:block" />
-          <Field label="Password">
-            <TextInput
-              type="password"
-              value={form.password}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, password: e.target.value }))
-              }
-            />
-          </Field>
-          <Field label="Password">
-            <TextInput
-              type="password"
-              value={form.confirmPassword}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, confirmPassword: e.target.value }))
-              }
-            />
-          </Field>
+          <form onSubmit={onSubmit} className="mt-6 grid gap-5 md:grid-cols-2">
+            <Field label="First Name">
+              <TextInput
+                value={form.firstName}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, firstName: e.target.value }))
+                }
+              />
+            </Field>
+            <Field label="Last Name">
+              <TextInput
+                value={form.lastName}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, lastName: e.target.value }))
+                }
+              />
+            </Field>
+            <Field label="Company Name">
+              <TextInput
+                value={form.companyName}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, companyName: e.target.value }))
+                }
+              />
+            </Field>
+            <Field label="E-mail Address">
+              <TextInput
+                type="email"
+                value={form.email}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, email: e.target.value }))
+                }
+              />
+            </Field>
+            <Field label="Username">
+              <TextInput
+                value={form.username}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, username: e.target.value }))
+                }
+              />
+            </Field>
+            <div className="hidden md:block" />
+            <Field label="Password">
+              <TextInput
+                type="password"
+                value={form.password}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, password: e.target.value }))
+                }
+              />
+            </Field>
+            <Field label="Password">
+              <TextInput
+                type="password"
+                value={form.confirmPassword}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, confirmPassword: e.target.value }))
+                }
+              />
+            </Field>
 
-          <div className="md:col-span-2 flex flex-col items-end gap-3 pt-4">
-            {message ? (
-              <p className="max-w-sm text-right text-sm text-red-600">
-                {message}
+            <div className="md:col-span-2 flex flex-col items-end gap-3 pt-2">
+              <p className="max-w-md text-right text-sm text-amber-700">
+                {message ||
+                  "System should send verify email link before account is finally created"}
               </p>
-            ) : (
-              <p className="max-w-sm text-right text-sm text-red-600">
-                System should send verify email link before account is finally
-                created
-              </p>
-            )}
-            <PurpleButton type="submit">Create</PurpleButton>
-          </div>
-        </form>
+              <PurpleButton type="submit" className="min-w-32">
+                Create
+              </PurpleButton>
+            </div>
+          </form>
+        </Panel>
       </div>
     </ChartBackground>
   );

@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit, Source_Sans_3 } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Outfit({
+const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700", "800"],
+  variable: "--font-geist-sans",
 });
 
-const body = Source_Sans_3({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "600", "700"],
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} font-[family-name:var(--font-body)] antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
       </body>

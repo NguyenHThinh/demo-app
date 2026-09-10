@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { RequireAuth } from "@/components/demo/require-auth";
 import {
+  AppShell,
   BrandBlock,
-  ChartBackground,
+  Panel,
   PurpleButton,
+  SelectInput,
   TextInput,
 } from "@/components/demo/chrome";
 import {
@@ -28,20 +30,27 @@ export default function NewProjectPage() {
   function onNext(e: React.FormEvent) {
     e.preventDefault();
     const caseMode = mapValuationCaseToMode(valuation, valuationCase);
-    // Draft only — NOT added to Open Existing until calculator Save
     setProjectDraft({ title, valuation, valuationCase, caseMode });
     router.push(`/calculator?draft=1&mode=${caseMode}`);
   }
 
   return (
     <RequireAuth>
-      <ChartBackground>
-        <div className="mx-auto min-h-screen max-w-4xl px-6 py-8">
-          <BrandBlock compact />
-
-          <form onSubmit={onNext} className="mt-10 space-y-6">
-            <div className="grid gap-3 md:grid-cols-[220px_1fr] md:items-center">
-              <span className="font-semibold text-[var(--brand-purple)]">
+      <AppShell
+        title={
+          <p className="text-sm font-medium text-navy">New Project</p>
+        }
+        actions={
+          <PurpleButton href="/home" variant="outline">
+            Home
+          </PurpleButton>
+        }
+      >
+        <BrandBlock compact />
+        <Panel className="mt-6 max-w-3xl">
+          <form onSubmit={onNext} className="space-y-6">
+            <div className="grid gap-3 md:grid-cols-[200px_1fr] md:items-center">
+              <span className="font-semibold text-navy">
                 Project Title
               </span>
               <TextInput
@@ -51,12 +60,11 @@ export default function NewProjectPage() {
               />
             </div>
 
-            <div className="grid gap-3 md:grid-cols-[220px_1fr] md:items-center">
-              <span className="font-semibold text-[var(--brand-purple)]">
+            <div className="grid gap-3 md:grid-cols-[200px_1fr] md:items-center">
+              <span className="font-semibold text-navy">
                 Project Valuation
               </span>
-              <select
-                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-slate-800 shadow-sm outline-none focus:ring-2 focus:ring-[var(--brand-purple)]"
+              <SelectInput
                 value={valuation}
                 onChange={(e) =>
                   setValuation(e.target.value as ProjectValuation)
@@ -64,18 +72,17 @@ export default function NewProjectPage() {
               >
                 <option>NPV Only</option>
                 <option>Real Options Valuation</option>
-              </select>
+              </SelectInput>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-[220px_1fr] md:items-start">
+            <div className="grid gap-3 md:grid-cols-[200px_1fr] md:items-start">
               <div>
-                <span className="font-semibold text-[var(--brand-purple)]">
+                <span className="font-semibold text-navy">
                   Valuation Case
                 </span>
-                <p className="mt-1 text-xs text-red-600">Single selection</p>
+                <p className="mt-1 text-xs text-amber-700">Single selection</p>
               </div>
-              <select
-                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-slate-800 shadow-sm outline-none focus:ring-2 focus:ring-[var(--brand-purple)]"
+              <SelectInput
                 value={valuationCase}
                 onChange={(e) =>
                   setValuationCase(e.target.value as ValuationCase)
@@ -85,17 +92,17 @@ export default function NewProjectPage() {
                 <option>Delay</option>
                 <option>Expand</option>
                 <option>Abandon</option>
-              </select>
+              </SelectInput>
             </div>
 
-            <p className="text-sm text-red-600">
+            <p className="text-sm text-amber-700">
               From here the program will go to the chosen valuation case
             </p>
 
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap gap-3 pt-2">
               <PurpleButton
                 type="button"
-                className="bg-slate-500 hover:bg-slate-600"
+                variant="outline"
                 onClick={() => router.push("/home")}
               >
                 Back
@@ -103,8 +110,8 @@ export default function NewProjectPage() {
               <PurpleButton type="submit">Next</PurpleButton>
             </div>
           </form>
-        </div>
-      </ChartBackground>
+        </Panel>
+      </AppShell>
     </RequireAuth>
   );
 }
