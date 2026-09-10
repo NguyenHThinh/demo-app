@@ -1,0 +1,1136 @@
+/* ROV Financial Model – integrated with dashboard theme */
+
+/* ===== Tabs ===== */
+.rov-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.rov-tab-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.rov-tab-btn:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.rov-tab-btn.active {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.rov-tab-btn-locked:disabled,
+.rov-tab-btn-locked[disabled] {
+  cursor: default;
+  opacity: 1;
+}
+
+.rov-tab-btn-locked:disabled:hover,
+.rov-tab-btn-locked[disabled]:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.rov-tab-content {
+  display: none;
+}
+
+.rov-tab-content.active {
+  display: block;
+  animation: rovFadeIn 0.2s ease;
+}
+
+@keyframes rovFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media print {
+  .binomial-tree {
+    page-break-inside: avoid;
+  }
+}
+
+/* ===== Form Grid ===== */
+.rov-form-grid, .rov-form-levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.rov-form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.3rem;
+}
+
+.rov-form-group label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.025em;
+  color: var(--muted-foreground);
+}
+
+.rov-input-label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 1rem;
+}
+
+.rov-input-label-tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  background: transparent;
+  color: color-mix(in oklch, var(--muted-foreground) 95%, transparent);
+  border-radius: 999px;
+  cursor: default;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.rov-input-label-tooltip-trigger:hover,
+.rov-input-label-tooltip-trigger:focus-visible {
+  color: var(--primary);
+  outline: none;
+}
+
+.rov-input-label-tooltip-content {
+  max-width: 18rem;
+  line-height: 1.35;
+}
+
+.rov-form-group input,
+.rov-form-group select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.rov-form-group input:focus,
+.rov-form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 20%, transparent);
+}
+
+.rov-form-group input::-webkit-outer-spin-button,
+.rov-form-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rov-form-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ===== CAPEX Section ===== */
+.rov-capex-section {
+  margin-bottom: 1.25rem;
+}
+
+.rov-capex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.rov-capex-grid input {
+  width: 100px;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: inherit;
+}
+
+.rov-capex-grid input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ===== Operating Inputs (Series) ===== */
+.rov-operating-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rov-operating-block {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.rov-operating-block-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.rov-operating-block-head h4 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.rov-operating-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+  gap: 0.3rem;
+}
+
+.rov-series-input {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rov-series-input label {
+  font-size: 0.6rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.rov-series-input input {
+  width: 100%;
+  padding: 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background: var(--card);
+  color: var(--foreground);
+  font-size: 0.75rem;
+  text-align: center;
+  -moz-appearance: textfield;
+  font-family: inherit;
+}
+
+.rov-series-input input::-webkit-outer-spin-button,
+.rov-series-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rov-series-input input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ===== KPI Grid ===== */
+.rov-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.rov-kpi-card {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.rov-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklch, var(--primary) 40%, var(--border));
+}
+
+.rov-kpi-card.highlight {
+  border-color: var(--primary);
+  background: color-mix(in oklch, var(--primary) 8%, var(--card));
+}
+
+.rov-kpi-label {
+  display: block;
+  font-size: 0.7rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.rov-kpi-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.rov-kpi-card.highlight .rov-kpi-value {
+  color: var(--primary);
+}
+
+/* Override highlight color when value is negative */
+.rov-kpi-card.highlight .rov-kpi-value.negative {
+  color: oklch(0.55 0.2 15);
+}
+.dark .rov-kpi-card.highlight .rov-kpi-value.negative {
+  color: oklch(0.65 0.22 15);
+}
+
+.rov-kpi-value.positive {
+  color: oklch(0.65 0.18 155);
+}
+
+.dark .rov-kpi-value.positive {
+  color: oklch(0.72 0.17 155);
+}
+
+.rov-kpi-value.negative {
+  color: oklch(0.55 0.2 15);
+}
+
+.dark .rov-kpi-value.negative {
+  color: oklch(0.65 0.22 15);
+}
+
+/* ===== Summary Table ===== */
+.rov-summary-table {
+  margin-top: 1rem;
+}
+
+.rov-summary-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.rov-summary-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.rov-summary-table td:first-child {
+  color: var(--muted-foreground);
+}
+
+.rov-summary-table td:last-child {
+  text-align: right;
+  font-weight: 500;
+}
+
+.rov-summary-table td.rov-positive {
+  color: oklch(0.65 0.18 155);
+}
+.dark .rov-summary-table td.rov-positive {
+  color: oklch(0.72 0.17 155);
+}
+.rov-summary-table td.rov-negative {
+  color: oklch(0.55 0.2 15);
+}
+.dark .rov-summary-table td.rov-negative {
+  color: oklch(0.65 0.22 15);
+}
+
+/* ===== DCF Results Table ===== */
+.rov-dcf-table-wrapper {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  margin-top: 0.75rem;
+  max-height: 600px;
+}
+
+.rov-dcf-table {
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  width: max-content;
+  min-width: 100%;
+}
+
+.rov-dcf-table th,
+.rov-dcf-table td {
+  padding: 0.3rem 0.5rem;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+}
+
+.rov-dcf-table .rov-row-label {
+  text-align: left;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--card);
+  font-weight: 500;
+  min-width: 220px;
+  color: var(--muted-foreground);
+  border-right: 1px solid var(--border);
+}
+
+.rov-dcf-table .rov-row-input .rov-row-label {
+  color: var(--primary);
+}
+
+.rov-dcf-table .rov-row-bold .rov-row-label {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.rov-dcf-table thead th {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 600;
+  font-size: 0.7rem;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-bottom: 2px solid var(--border);
+}
+
+.rov-dcf-table thead th.rov-row-label {
+  z-index: 3;
+}
+
+.rov-dcf-table .rov-row-input td {
+  background: color-mix(in oklch, var(--primary) 4%, var(--card));
+}
+
+.rov-dcf-table .rov-row-input .rov-row-label {
+  background: color-mix(in oklch, var(--primary) 8%, var(--card));
+}
+
+.rov-dcf-table .rov-cell-negative {
+  color: oklch(0.55 0.2 15);
+}
+
+.dark .rov-dcf-table .rov-cell-negative {
+  color: oklch(0.65 0.22 15);
+}
+
+.rov-dcf-table input {
+  width: 72px;
+  padding: 0.2rem 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.75rem;
+  text-align: right;
+  font-family: inherit;
+  -moz-appearance: textfield;
+}
+
+.rov-dcf-table input::-webkit-outer-spin-button,
+.rov-dcf-table input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rov-dcf-table input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ===== Toggle Details Button ===== */
+.rov-toggle-details {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.rov-toggle-details:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* ===== Toggle Data Entry Button ===== */
+.rov-toggle-entry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: 0.25rem;
+}
+.rov-toggle-entry-btn:hover {
+  background: var(--accent);
+  border-color: color-mix(in oklch, var(--primary) 40%, var(--border));
+}
+
+/* ===== Read-only CAPEX cells ===== */
+.rov-readonly-cell {
+  display: inline-block;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  padding: 0.25rem 0.4rem;
+}
+
+/* ===== Modal ===== */
+.rov-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rov-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.rov-modal-panel {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 94vw;
+  max-width: 1400px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rov-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.rov-modal-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.rov-modal-close {
+  background: none;
+  border: none;
+  color: var(--muted-foreground);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+  transition: all 0.15s;
+}
+
+.rov-modal-close:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.rov-modal-body {
+  padding: 1rem 1.25rem;
+  overflow: hidden;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ===== Binomial Meta ===== */
+.rov-binomial-meta {
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.rov-binomial-meta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.rov-binomial-meta-grid>div {
+  display: flex;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+
+.rov-binomial-meta-grid .rov-meta-k {
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+
+.rov-binomial-meta-grid .rov-meta-v {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.rov-funnel-legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+}
+
+.rov-legend-v {
+  color: var(--foreground);
+}
+
+.rov-legend-ov {
+  color: oklch(0.65 0.18 155);
+}
+
+.dark .rov-legend-ov {
+  color: oklch(0.72 0.17 155);
+}
+
+/* ===== Binomial Funnel Table ===== */
+.rov-tree-wrapper {
+  overflow: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rov-funnel-table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.rov-funnel-table th,
+.rov-funnel-table td {
+  text-align: center;
+  vertical-align: middle;
+  height: 1.7em;
+  line-height: 1.7em;
+}
+
+.rov-funnel-table thead th {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.rov-funnel-table .rov-type-col {
+  width: 28px;
+  min-width: 28px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.rov-funnel-table .rov-sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--card);
+}
+
+.rov-funnel-table thead .rov-sticky-col {
+  z-index: 3;
+  background: var(--accent);
+}
+
+.rov-funnel-table .rov-v-label {
+  color: var(--primary);
+}
+
+.rov-funnel-table .rov-ov-label {
+  color: oklch(0.65 0.18 155);
+}
+
+.dark .rov-funnel-table .rov-ov-label {
+  color: oklch(0.72 0.17 155);
+}
+
+.rov-funnel-table .rov-cell-v {
+  font-weight: 500;
+  padding: 0.15rem 0.75rem;
+  min-width: 80px;
+  background: color-mix(in oklch, var(--primary) 5%, var(--card));
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.rov-funnel-table .rov-cell-ov {
+  color: oklch(0.65 0.18 155);
+  font-weight: 500;
+  padding: 0.15rem 0.75rem;
+  min-width: 80px;
+  background: color-mix(in oklch, oklch(0.65 0.18 155) 5%, var(--card));
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.dark .rov-funnel-table .rov-cell-ov {
+  color: oklch(0.72 0.17 155);
+}
+
+.rov-funnel-table .rov-empty-cell {
+  border: none;
+}
+
+/* ===== Industry Volatility Selector ===== */
+.rov-industry-selector {
+  position: relative;
+}
+
+.rov-industry-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 2px;
+}
+
+.rov-industry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+
+.rov-industry-item:hover {
+  background: var(--accent);
+}
+
+.rov-industry-item-selected {
+  background: color-mix(in oklch, var(--primary) 10%, var(--card));
+  font-weight: 500;
+}
+
+.rov-industry-empty {
+  color: var(--muted-foreground);
+  justify-content: center;
+  cursor: default;
+}
+
+.rov-industry-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rov-industry-sigma {
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.rov-industry-info {
+  background: color-mix(in oklch, var(--primary) 5%, var(--card));
+  border: 1px solid color-mix(in oklch, var(--primary) 20%, var(--border));
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.rov-industry-info-title {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.rov-industry-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.15rem 1rem;
+  color: var(--muted-foreground);
+}
+
+.rov-industry-info-highlight {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.rov-industry-info-wrapper {
+  grid-column: 1 / -1;
+}
+
+.rov-industry-info-source {
+  font-style: italic;
+  font-size: 0.65rem;
+}
+
+/* ===== Read-only Input ===== */
+.rov-readonly {
+  background: var(--accent) !important;
+  color: var(--muted-foreground) !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ===== Info Grid (computed read-only values) ===== */
+.rov-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem 1rem;
+  margin-top: 0.25rem;
+}
+
+.rov-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid color-mix(in oklch, var(--border) 50%, transparent);
+  font-size: 0.8rem;
+}
+
+.rov-info-label {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.rov-info-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+.rov-info-value.rov-positive {
+  color: oklch(0.65 0.18 155);
+}
+
+.dark .rov-info-value.rov-positive {
+  color: oklch(0.72 0.17 155);
+}
+
+.rov-info-value.rov-negative {
+  color: oklch(0.55 0.2 15);
+}
+
+.dark .rov-info-value.rov-negative {
+  color: oklch(0.65 0.22 15);
+}
+
+/* Active info item (selected volatility source) */
+.rov-info-item.rov-info-active {
+  background: color-mix(in oklch, var(--primary) 8%, var(--card));
+  border-bottom-color: var(--primary);
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.rov-info-item.rov-info-active .rov-info-label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.rov-info-item.rov-info-active .rov-info-value {
+  color: var(--primary);
+}
+
+/* ===== Active Field Highlight ===== */
+.rov-form-group {
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  border: 1px solid transparent;
+}
+
+.rov-form-group.rov-field-active {
+  background: color-mix(in oklch, var(--primary) 8%, var(--card));
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+}
+
+.rov-form-group.rov-field-active label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ===== Binomial Tree Meta Rows ===== */
+.rov-meta-row td {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  text-align: center;
+  color: var(--muted-foreground);
+  border-bottom: 1px solid color-mix(in oklch, var(--border) 40%, transparent);
+}
+
+.rov-meta-row-label {
+  text-align: left !important;
+  font-weight: 600;
+  font-size: 0.65rem !important;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.rov-meta-row-cell {
+  font-variant-numeric: tabular-nums;
+}
+
+.rov-meta-row-strike td {
+  color: oklch(0.55 0.2 15);
+}
+
+.dark .rov-meta-row-strike td {
+  color: oklch(0.65 0.22 15);
+}
+
+.rov-meta-row-cost td {
+  color: oklch(0.55 0.15 40);
+}
+
+.dark .rov-meta-row-cost td {
+  color: oklch(0.65 0.15 40);
+}
+
+.rov-meta-row-total td {
+  font-weight: 600;
+  border-bottom: 2px solid var(--border);
+}
+
+.rov-tree-separator td {
+  height: 4px;
+  border-bottom: 2px solid var(--primary);
+}
+
+/* ===== Sub-tabs (within a tab, e.g. Expand) ===== */
+.rov-sub-tabs {
+  display: flex;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.rov-sub-tab {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.rov-sub-tab:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.rov-sub-tab-active {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .rov-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rov-tab-btn {
+    white-space: nowrap;
+  }
+
+  .rov-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== Section Action Buttons (Print / Expand View) ===== */
+.rov-section-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.rov-action-btn {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.rov-action-btn:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.rov-print-root {
+  display: none;
+}
+
+/* ===== Print Styles =====
+ * Named page so global `@page { landscape }` cannot leak onto Project Report print.
+ * Applied only while `body.rov-printing` (calculator print path).
+ */
+@page rov-landscape {
+  size: landscape;
+  margin: 1cm;
+}
+
+@media print {
+  body.rov-printing {
+    page: rov-landscape;
+  }
+
+  /* Print only the temporary root to avoid blank pages. */
+  body.rov-printing > * {
+    display: none !important;
+  }
+
+  body.rov-printing > .rov-print-root {
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-start;
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  /* Scale down the entire funnel when the table is wider than the print area (to avoid losing right-side columns). */
+  body.rov-printing > .rov-print-root .rov-print-target {
+    flex: 0 0 auto;
+    transform: scale(var(--rov-print-scale, 1));
+    transform-origin: top center;
+    width: max-content;
+    max-width: none;
+  }
+
+  /* Keep dense generic binomial table compact; funnel has adaptive size below. */
+  .rov-binomial-table:not(.rov-funnel-table) {
+    font-size: 7px;
+  }
+
+  body.rov-printing > .rov-print-root .rov-funnel-table {
+    font-size: var(--rov-print-font-size, 0.8rem);
+  }
+
+  .rov-tree-wrapper {
+    overflow: visible;
+  }
+
+  body.rov-printing > .rov-print-root .rov-tree-wrapper {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  body.rov-printing > .rov-print-root .rov-funnel-table .rov-cell-v,
+  body.rov-printing > .rov-print-root .rov-funnel-table .rov-cell-ov {
+    min-width: var(--rov-print-cell-min-width, 2.3rem);
+    padding:
+      var(--rov-print-cell-padding-y, 0.1rem)
+      var(--rov-print-cell-padding-x, 0.42rem);
+  }
+
+  body.rov-printing > .rov-print-root .rov-meta-row td {
+    font-size: var(--rov-print-meta-font-size, 0.7rem);
+    padding:
+      var(--rov-print-meta-padding-y, 0.2rem)
+      var(--rov-print-meta-padding-x, 0.5rem);
+  }
+
+  .rov-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Hide action buttons when printing */
+  .rov-section-actions {
+    display: none;
+  }
+
+  /* Hide editable inputs in Additional Costs row when printing, show plain value instead */
+  .rov-print-root .rov-print-hide-inputs input {
+    display: none !important;
+  }
+  .rov-print-root .rov-print-hide-inputs .rov-print-only-value {
+    display: inline-block !important;
+  }
+}
+
+/* On screen: hide the plain text print-only span */
+.rov-print-hide-inputs .rov-print-only-value {
+  display: none;
+}
