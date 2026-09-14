@@ -19,6 +19,28 @@ export function BrandMark({ onDark = true }: { onDark?: boolean }) {
   );
 }
 
+/** Light full-page shell for auth / about (replaces ChartBackground on product pages). */
+export function AuthShell({
+  children,
+  maxWidthClassName = "max-w-lg",
+}: {
+  children: React.ReactNode;
+  maxWidthClassName?: string;
+}) {
+  return (
+    <div className="min-h-screen bg-content-bg">
+      <div
+        className={cn(
+          "mx-auto flex min-h-screen flex-col justify-center px-4 py-10",
+          maxWidthClassName,
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export function BrandBlock({
   compact = false,
   onDark = false,
@@ -184,7 +206,7 @@ export function AppShell({
           {actions}
         </div>
       </header>
-      <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-[1400px] p-3 md:p-4">
         {children}
       </main>
     </div>
@@ -201,7 +223,7 @@ export function Panel({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-content-border bg-white p-6 shadow-sm md:p-8",
+        "animate-in fade-in duration-200 rounded-2xl border border-content-border bg-white p-6 shadow-sm md:p-8",
         className,
       )}
     >
