@@ -56,7 +56,7 @@ export default function SignUpPage() {
       </div>
 
       <Panel>
-        <h2 className="text-2xl font-bold text-navy">
+        <h2 className="text-2xl font-semibold tracking-tight text-navy">
           Create New Account
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
@@ -127,10 +127,23 @@ export default function SignUpPage() {
           </Field>
 
           <div className="flex flex-col items-end gap-3 pt-2 md:col-span-2">
-            <p className="max-w-md text-right text-sm text-muted-foreground">
-              {message ||
-                "System should send verify email link before account is finally created"}
-            </p>
+            {message ? (
+              <p
+                className={`max-w-md text-right text-sm ${
+                  message.startsWith("System should") ||
+                  message.includes("verify email")
+                    ? "text-muted-foreground"
+                    : "text-red-600"
+                }`}
+              >
+                {message}
+              </p>
+            ) : (
+              <p className="max-w-md text-right text-sm text-muted-foreground">
+                System should send verify email link before account is finally
+                created
+              </p>
+            )}
             <PurpleButton type="submit" className="min-w-32">
               Create
             </PurpleButton>
