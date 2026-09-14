@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { RequireAuth } from "@/components/demo/require-auth";
-import { AppShell, BrandBlock, PurpleButton } from "@/components/demo/chrome";
+import { AppShell } from "@/components/demo/chrome";
 import { clearSession } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 
@@ -29,24 +30,34 @@ export default function HomePage() {
           </button>
         }
       >
-        <div className="mb-8">
-          <BrandBlock compact />
+        <div className="mb-6">
+          <h1 className="text-2xl font-semibold tracking-tight text-navy md:text-3xl">
+            Choose how to continue
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Create a valuation case or open one you already saved.
+          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <PurpleButton
+          <Link
             href="/projects/new"
-            className="h-auto min-h-28 flex-col gap-1 rounded-2xl px-8 py-6 text-lg"
+            className="rounded-2xl border border-content-border bg-white p-6 shadow-sm transition hover:border-brand hover:shadow-md"
           >
-            New Project
-          </PurpleButton>
-          <PurpleButton
+            <p className="text-lg font-semibold text-navy">New Project</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Start a new NPV or Real Options case.
+            </p>
+          </Link>
+          <Link
             href="/projects"
-            variant="secondary"
-            className="h-auto min-h-28 flex-col gap-1 rounded-2xl px-8 py-6 text-lg"
+            className="rounded-2xl border border-content-border bg-white p-6 shadow-sm transition hover:border-brand hover:shadow-md"
           >
-            Open Existing
-          </PurpleButton>
+            <p className="text-lg font-semibold text-navy">Open Existing</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Review or edit a saved valuation case.
+            </p>
+          </Link>
         </div>
       </AppShell>
     </RequireAuth>

@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { RequireAuth } from "@/components/demo/require-auth";
 import {
   AppShell,
-  BrandBlock,
   Panel,
   PurpleButton,
 } from "@/components/demo/chrome";
@@ -44,8 +43,7 @@ export default function ProjectsPage() {
           </PurpleButton>
         }
       >
-        <BrandBlock compact />
-        <Panel className="mt-6 max-w-3xl">
+        <Panel className="max-w-3xl">
           <h2 className="text-lg font-bold text-navy">
             Valuation Cases
           </h2>
@@ -73,11 +71,6 @@ export default function ProjectsPage() {
               ))
             )}
           </ul>
-
-          <p className="mt-4 text-sm text-amber-700">
-            From here any selected file from above will be opened for review or
-            edit
-          </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <PurpleButton

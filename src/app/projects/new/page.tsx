@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { RequireAuth } from "@/components/demo/require-auth";
 import {
   AppShell,
-  BrandBlock,
   Panel,
   PurpleButton,
   SelectInput,
@@ -46,8 +45,7 @@ export default function NewProjectPage() {
           </PurpleButton>
         }
       >
-        <BrandBlock compact />
-        <Panel className="mt-6 max-w-3xl">
+        <Panel className="max-w-3xl">
           <form onSubmit={onNext} className="space-y-6">
             <div className="grid gap-3 md:grid-cols-[200px_1fr] md:items-center">
               <span className="font-semibold text-navy">
@@ -76,12 +74,9 @@ export default function NewProjectPage() {
             </div>
 
             <div className="grid gap-3 md:grid-cols-[200px_1fr] md:items-start">
-              <div>
-                <span className="font-semibold text-navy">
-                  Valuation Case
-                </span>
-                <p className="mt-1 text-xs text-amber-700">Single selection</p>
-              </div>
+              <span className="font-semibold text-navy">
+                Valuation Case
+              </span>
               <SelectInput
                 value={valuationCase}
                 onChange={(e) =>
@@ -94,10 +89,6 @@ export default function NewProjectPage() {
                 <option>Abandon</option>
               </SelectInput>
             </div>
-
-            <p className="text-sm text-amber-700">
-              From here the program will go to the chosen valuation case
-            </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
               <PurpleButton
