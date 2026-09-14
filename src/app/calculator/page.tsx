@@ -86,7 +86,7 @@ function CalculatorInner() {
   return (
     <div className="min-h-screen bg-content-bg">
       <header className="sticky top-0 z-20 border-b border-content-border bg-white">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <div className="flex min-w-0 items-center gap-4">
             <BrandMark onDark={false} />
             <div className="min-w-0 border-l border-content-border pl-4">
@@ -124,7 +124,7 @@ function CalculatorInner() {
       </header>
 
       <div className="mx-auto max-w-[1400px] p-3 md:p-4">
-        <div className="overflow-hidden rounded-2xl border border-content-border bg-white shadow-sm">
+        <div className="animate-in fade-in duration-200 overflow-hidden rounded-2xl border border-content-border bg-white shadow-sm">
           <FinancialCalculatorModule
             key={projectId ?? "draft"}
             embedMode
