@@ -110,7 +110,7 @@ function CalculatorInner() {
                 variant="outline"
                 onClick={() => {
                   clearProjectDraft();
-                  router.push("/projects/new");
+                  router.push("/home");
                 }}
               >
                 Discard draft
