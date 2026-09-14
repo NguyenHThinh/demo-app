@@ -6,3 +6,4 @@ out
 .env*.local
 .ppt-extract
 *.tsbuildinfo
+.superpowers/
